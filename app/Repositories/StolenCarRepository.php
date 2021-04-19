@@ -56,10 +56,10 @@ class StolenCarRepository extends BaseRepository
                     $query->orderBy($input['sort_by'], $sortOrder);
                     break;
                 case 'make':
-                    $query->orederBy('car_makes.name', $sortOrder);
+                    $query->orderBy('car_makes.name', $sortOrder);
                     break;
                 case 'model':
-                    $query->orederBy('car_models.name', $sortOrder);
+                    $query->orderBy('car_models.name', $sortOrder);
                     break;
             }
         }
