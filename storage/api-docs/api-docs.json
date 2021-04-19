@@ -192,7 +192,7 @@
                 }
             },
             "make": {
-                "name": "makeID",
+                "name": "make",
                 "in": "query",
                 "description": "ID марки авто",
                 "schema": {
@@ -200,7 +200,7 @@
                 }
             },
             "model": {
-                "name": "modelID",
+                "name": "model",
                 "in": "query",
                 "description": "ID модели авто",
                 "schema": {

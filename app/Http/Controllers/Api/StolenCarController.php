@@ -203,7 +203,7 @@ class StolenCarController extends Controller
      * @OA\Parameter(
      *      parameter="make",
      *      in="query",
-     *      name="makeID",
+     *      name="make",
      *      description="ID марки авто",
      *      @OA\Schema(
      *          type="integer",
@@ -213,7 +213,7 @@ class StolenCarController extends Controller
      * @OA\Parameter(
      *      parameter="model",
      *      in="query",
-     *      name="modelID",
+     *      name="model",
      *      description="ID модели авто",
      *      @OA\Schema(
      *          type="integer",
