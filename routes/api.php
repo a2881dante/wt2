@@ -14,7 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::resource('stolen-cars', 'Api\StolenCarController');
+Route::resource('stolen-cars', 'Api\StolenCarController')
+    ->except(['show']);
 
 Route::get('stolen-cars/export/', 'Api\StolenCarController@export');
 
