@@ -1,0 +1,303 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Wezom Test 2 (Stolen Cars API)",
+        "version": "1.0"
+    },
+    "paths": {
+        "/api/makes/{partname}": {
+            "get": {
+                "tags": [
+                    "Car Makes"
+                ],
+                "summary": "Получить список марок авто и моделей по частичному названию",
+                "description": "Получить список марок авто и моделей по частичному названию",
+                "operationId": "getMakesWithModels",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/partname"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/api/stolen-cars/": {
+            "get": {
+                "tags": [
+                    "Stolen Cars"
+                ],
+                "summary": "Получить список угнанных авто",
+                "description": "Получить список угнанных авто",
+                "operationId": "getStolenCars",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/make"
+                    },
+                    {
+                        "$ref": "#/components/parameters/model"
+                    },
+                    {
+                        "$ref": "#/components/parameters/year"
+                    },
+                    {
+                        "$ref": "#/components/parameters/search"
+                    },
+                    {
+                        "$ref": "#/components/parameters/sort_by"
+                    },
+                    {
+                        "$ref": "#/components/parameters/sort_order"
+                    },
+                    {
+                        "$ref": "#/components/parameters/page"
+                    },
+                    {
+                        "$ref": "#/components/parameters/pages"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/api/stolen-cars": {
+            "post": {
+                "tags": [
+                    "Stolen Cars"
+                ],
+                "summary": "Добавить запись об угнанном авто",
+                "description": "Добавить запись об угнанном авто",
+                "operationId": "storeStolenCar",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/full_name"
+                    },
+                    {
+                        "$ref": "#/components/parameters/car_number"
+                    },
+                    {
+                        "$ref": "#/components/parameters/color"
+                    },
+                    {
+                        "$ref": "#/components/parameters/vin"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/api/stolen-cars/{idCar}": {
+            "put": {
+                "tags": [
+                    "Stolen Cars"
+                ],
+                "summary": "Редактировать запись об угнанном авто",
+                "description": "Редактировать запись об угнанном авто",
+                "operationId": "updateStolenCar",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/idCar"
+                    },
+                    {
+                        "$ref": "#/components/parameters/full_name"
+                    },
+                    {
+                        "$ref": "#/components/parameters/car_number"
+                    },
+                    {
+                        "$ref": "#/components/parameters/color"
+                    },
+                    {
+                        "$ref": "#/components/parameters/vin"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Stolen Cars"
+                ],
+                "summary": "Удалить запись об угнанном авто",
+                "description": "Удалить запись об угнанном авто",
+                "operationId": "delStolenCars",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/idCar"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/api/stolen-cars/export": {
+            "get": {
+                "tags": [
+                    "Stolen Cars"
+                ],
+                "summary": "Экспорт списка угнанных авто в xls",
+                "description": "Экспорт списка угнанных авто в xls",
+                "operationId": "exportStolenCarsToXls",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/make"
+                    },
+                    {
+                        "$ref": "#/components/parameters/model"
+                    },
+                    {
+                        "$ref": "#/components/parameters/year"
+                    },
+                    {
+                        "$ref": "#/components/parameters/search"
+                    },
+                    {
+                        "$ref": "#/components/parameters/sort_by"
+                    },
+                    {
+                        "$ref": "#/components/parameters/sort_order"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "parameters": {
+            "partname": {
+                "name": "partname",
+                "in": "path",
+                "description": "Частичное название марки авто",
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "make": {
+                "name": "makeID",
+                "in": "query",
+                "description": "ID марки авто",
+                "schema": {
+                    "type": "integer"
+                }
+            },
+            "model": {
+                "name": "modelID",
+                "in": "query",
+                "description": "ID модели авто",
+                "schema": {
+                    "type": "integer"
+                }
+            },
+            "year": {
+                "name": "year",
+                "in": "query",
+                "description": "Год выпуска авто",
+                "schema": {
+                    "type": "integer"
+                }
+            },
+            "search": {
+                "name": "year",
+                "in": "query",
+                "description": "Поисковая строка по: имени владельца | номеру авто | VIN коду",
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "sort_by": {
+                "name": "sort_by",
+                "in": "query",
+                "description": "Указание по какому полю сортировать",
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "sort_order": {
+                "name": "sort_order",
+                "in": "query",
+                "description": "Указание порядка сортировки",
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "full_name": {
+                "name": "full_name",
+                "in": "query",
+                "description": "Имя владельца авто",
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "car_number": {
+                "name": "car_number",
+                "in": "query",
+                "description": "Гос.номер авто",
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "color": {
+                "name": "color",
+                "in": "query",
+                "description": "Цвет авто",
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "vin": {
+                "name": "vin",
+                "in": "query",
+                "description": "VIN код авто",
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "idCar": {
+                "name": "idСar",
+                "in": "path",
+                "description": "ID записи об уганном авто",
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "page": {
+                "name": "page",
+                "in": "query",
+                "description": "Номер страницы при выводе списка",
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "pages": {
+                "name": "pages",
+                "in": "query",
+                "description": "Количество элементов на странице при выводе",
+                "schema": {
+                    "type": "string"
+                }
+            }
+        }
+    },
+    "security": [
+        []
+    ]
+}

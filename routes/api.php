@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::resource('stolen-cars', 'Api\StolenCarController');
+
+Route::get('stolen-cars/export/', 'Api\StolenCarController@export');
+
+Route::get('makes/{partname}', 'Api\MakeController@getWithModels');
