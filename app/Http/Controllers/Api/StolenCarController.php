@@ -123,10 +123,10 @@ class StolenCarController extends Controller
     public function update(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
-            'full_name' => 'required|string',
-            'car_number' => 'required|string|max:10',
-            'color' => 'required|string',
-            'vin' => 'required|string|alpha_num|size:17',
+            'full_name' => 'string',
+            'car_number' => 'string|max:10',
+            'color' => 'string',
+            'vin' => 'string|alpha_num|size:17',
         ]);
         if ($validator->fails()) {
             return response()->json([

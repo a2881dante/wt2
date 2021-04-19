@@ -23,7 +23,8 @@ class StolenCarRepository extends BaseRepository
 
     public function updateById($id, array $input)
     {
-        return parent::updateById($id, self::getAttributesWithDecodedVin($input));
+        $attrs = !empty($input['vin']) ?  self::getAttributesWithDecodedVin($input) : $input;
+        return parent::updateById($id, $attrs);
     }
 
     public function getWithFilterQuery($input)
